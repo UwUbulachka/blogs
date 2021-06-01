@@ -3,6 +3,28 @@
 # The generated `.rspec` file contains `--require spec_helper` which will cause
 # this file to always be loaded, without a need to explicitly require it in any
 # files.
+
+require 'shoulda-matchers'
+
+require "bundler/setup"
+::Bundler.require(:default, :test)
+
+::Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    # Choose a test framework:
+    with.test_framework :rspec
+    #with.test_framework :minitest
+    #with.test_framework :minitest_4
+    #with.test_framework :test_unit
+
+    # Choose one or more libraries:
+    with.library :active_record
+    with.library :active_model
+    #with.library :action_controller
+    # Or, choose the following (which implies all of the above):
+    #with.library :rails
+  end
+end
 #
 # Given that it is always loaded, you are encouraged to keep this file as
 # light-weight as possible. Requiring heavyweight dependencies from this file
